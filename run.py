@@ -54,8 +54,35 @@ def count_hit_ships(board):
                 count += 1
     return count
 
-def turns():
+def determine_turns():
+    """
+    Determine the starting number of turns
+    """
     turns = input("Enter the number of turns you want to start with 1-10: ")
-    while turns not in "12345678910" or len(turns) == 0:
+    while turns not in "12345678910":
         print('Invalid input, please enter a number 1-10')
         turns = input("Enter the number of turns you want to start with 1-10: ")
+
+create_ships(hidden_board)
+turns = 10
+while turns > 0:
+    print('O = Miss and X = Hit')
+    print('Guess a battleship location')
+    print_board(guess_board)
+    row, column = get_ship_location()
+    if guess_board[row][column] == "O":
+        print("You already guessed that location.")
+    elif hidden_board[row][column] == "X":
+        print("You hit a battleship!")
+        guess_board[row][column] = "X" 
+        turns -= 1  
+    else:
+        print("Sorry, you missed.")
+        guess_board[row][column] = "O"   
+        turns -= 1     
+    if count_hit_ships(guess_board) == 5:
+        print("Congratulations, you sank all of the computer's battleships!")
+        break
+    print(f"You have {turns} turns left")
+    if turns == 0:
+        print("Sorry, you have no turns left, Game Over.")
