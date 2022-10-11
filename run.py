@@ -69,7 +69,18 @@ def determine_turns():
 
 create_ships(hidden_board)
 determine_turns()
-print('Welcome!')
+print('Welcome to Battleships!')
+print(r"""
+              |    |    |
+             )_)  )_)  )_)
+            )___))___))___)\
+           )____)____)_____)\\
+         _____|____|____|____\\\__
+---------\                   /---------
+  ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+    ^^^^      ^^^^     ^^^    ^^
+         ^^^^      ^^^
+    """)
 while turns > 0:
     print('O = Miss and X = Hit')
     print('Guess a battleship location')
