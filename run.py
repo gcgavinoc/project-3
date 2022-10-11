@@ -58,13 +58,18 @@ def determine_turns():
     """
     Determine the starting number of turns
     """
-    turns = input("Enter the number of turns you want to start with 1-10: ")
-    while turns not in "12345678910":
+    global turns
+    print("Enter the number of turns you want to start with 1-10: ")
+    turns = input()
+    while turns not in '1,2,3,4,5,6,7,8,9,10' or len(turns) == 0:
         print('Invalid input, please enter a number 1-10')
-        turns = input("Enter the number of turns you want to start with 1-10: ")
+        print("Enter the number of turns you want to start with 1-10: ")
+        turns = input()
+    turns = int(turns)
 
 create_ships(hidden_board)
-turns = 10
+determine_turns()
+print('Welcome!')
 while turns > 0:
     print('O = Miss and X = Hit')
     print('Guess a battleship location')
