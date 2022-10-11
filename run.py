@@ -43,3 +43,19 @@ def get_ship_location():
         column = input('Enter the column of the ship: ').upper()
     return int(row) - 1, letters_to_numbers[column]
 
+def count_hit_ships(board):
+    """
+    Check for number of hit ships
+    """
+    count = 0
+    for row in board:
+        for column in row:
+            if column == "X":
+                count += 1
+    return count
+
+def turns():
+    turns = input("Enter the number of turns you want to start with 1-10: ")
+    while turns not in "12345678910" or len(turns) == 0:
+        print('Invalid input, please enter a number 1-10')
+        turns = input("Enter the number of turns you want to start with 1-10: ")
