@@ -7,6 +7,9 @@ guess_board = [[' '] * 8 for i in range(8)]
 #Convert letter inputs to numbers
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
+def get_rules():
+    print('These are the rules!')
+
 def print_board(board):
     """
     Print the game board to the console
@@ -67,10 +70,39 @@ def determine_turns():
         turns = input()
     turns = int(turns)
 
-create_ships(hidden_board)
-determine_turns()
-print('Welcome to Battleships!')
-print(r"""
+def main():
+    create_ships(hidden_board)
+    determine_turns()
+    global turns
+    while turns > 0:
+        print('O = Miss and X = Hit')
+        print('Guess a battleship location')
+        print_board(guess_board)
+        row, column = get_ship_location()
+        if guess_board[row][column] == "O":
+            print("You already guessed that location.")
+        elif hidden_board[row][column] == "X":
+            print("You hit a battleship!")
+            guess_board[row][column] = "X" 
+            turns -= 1  
+        else:
+            print("Sorry, you missed.")
+            guess_board[row][column] = "O"   
+            turns -= 1     
+        if count_hit_ships(guess_board) == 5:
+            print("Congratulations, you sank all of the computer's battleships!")
+            break
+        print(f"You have {turns} turns left")
+        if turns == 0:
+            print("Sorry, you have no turns left, Game Over.")
+
+def welcome():
+    """
+    Welcome message displays on program load
+    Gives option to show rules or play game
+    """
+    print('Welcome to Battleships!')
+    print(r"""
               |    |    |
              )_)  )_)  )_)
             )___))___))___)\
@@ -81,24 +113,8 @@ print(r"""
     ^^^^      ^^^^     ^^^    ^^
          ^^^^      ^^^
     """)
-while turns > 0:
-    print('O = Miss and X = Hit')
-    print('Guess a battleship location')
-    print_board(guess_board)
-    row, column = get_ship_location()
-    if guess_board[row][column] == "O":
-        print("You already guessed that location.")
-    elif hidden_board[row][column] == "X":
-        print("You hit a battleship!")
-        guess_board[row][column] = "X" 
-        turns -= 1  
+    start = input('Press enter to play the game or type rules and press enter to see the rules: ')
+    if start not in 'rules' or len(start) == 0:
+        main()
     else:
-        print("Sorry, you missed.")
-        guess_board[row][column] = "O"   
-        turns -= 1     
-    if count_hit_ships(guess_board) == 5:
-        print("Congratulations, you sank all of the computer's battleships!")
-        break
-    print(f"You have {turns} turns left")
-    if turns == 0:
-        print("Sorry, you have no turns left, Game Over.")
+        get_rules()
