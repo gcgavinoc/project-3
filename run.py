@@ -8,7 +8,14 @@ guess_board = [[' '] * 8 for i in range(8)]
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
 def get_rules():
-    print('These are the rules!')
+    print('The rules:')
+    print('Choose the number of turns you want to start with, the more turns the easier the game')
+    print("When prompted, enter the coordinates of where you think you're opponents battleship is to shoot at it")
+    print('When all of either you or your opponents battleships are sunk, the game ends')
+    print('Be mindful of how many turns you have remaining, if you fail to sink all of the opponents battleships before you run out of turns, you lose')
+    play = input('Press the enter key to start the game!')
+    while play in '':
+        main()
 
 def print_board(board):
     """
@@ -118,3 +125,5 @@ def welcome():
         main()
     else:
         get_rules()
+
+welcome()
