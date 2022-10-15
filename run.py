@@ -168,9 +168,16 @@ def main():
         print_board(player_guess_board)
         print('Guess a battleship location')
         row, column = get_ship_location()
-        if player_guess_board[row][column] == 'O':
-            print('You already guessed that location.')
-        elif computer_board[row][column] == 'X':
+        while True:
+            if player_guess_board[row][column] == 'O':
+                print('You already guessed that location.')
+                row, column = get_ship_location()
+            elif player_guess_board[row][column] == 'X':
+                print('You already guessed that location.')
+                row, column = get_ship_location()
+            else:
+                break
+        if computer_board[row][column] == 'X':
             print('You hit a battleship!')
             player_guess_board[row][column] = 'X'
             turns -= 1  
