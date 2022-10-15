@@ -13,6 +13,10 @@ numbers_to_letters = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7:
 
 
 def get_rules():
+    """
+    Print game rules to the console
+    and play game on user pressing enter key
+    """
     print('The rules:')
     print('Choose the number of turns you want to start with, the more turns the easier the game')
     print("When prompted, enter the coordinates of where you think you're opponents battleship is to shoot at it")
@@ -113,11 +117,11 @@ def determine_turns():
     Determine the starting number of turns.
     """
     global turns
-    print("Enter the number of turns you want to start with 1-40: ")
+    print("Enter the number of turns you want to start with 1-60: ")
     turns = input()
-    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40' or len(turns) == 0:
-        print('Invalid input, please enter a number 1-40')
-        print("Enter the number of turns you want to start with 1-10: ")
+    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60' or len(turns) == 0:
+        print('Invalid input, please enter a number 1-60')
+        print("Enter the number of turns you want to start with 1-60: ")
         turns = input()
     turns = int(turns)
 
@@ -189,11 +193,14 @@ def main():
             print("Congratulations, you sank all of the computer's battleships!")
             play_again()
         computer_row, computer_column = computer_turn()
-        if computer_guess_board[computer_row][computer_column] == 'O':
-            print('The computer guessed:')
-            print(int(computer_row) + 1, numbers_to_letters[computer_column])
-            print('You already guessed that location.')
-        elif player_board[computer_row][computer_column] == 'X':
+        while True:
+            if computer_guess_board[computer_row][computer_column] == 'O':
+                computer_row, computer_column = computer_turn()
+            elif computer_guess_board[computer_row][computer_column] == 'X':
+                computer_row, computer_column = computer_turn()
+            else:
+                break
+        if player_board[computer_row][computer_column] == 'X':
             print('The computer guessed:')
             print(int(computer_row) + 1, numbers_to_letters[computer_column])
             print('The computer hit one of your Battleships!')
