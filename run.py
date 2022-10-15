@@ -1,9 +1,11 @@
 from random import randint
 
 #Board for holding ship locations
-hidden_board = [[' '] * 8 for i in range(8)]
+player_board = [[' '] * 8 for i in range(8)]
+computer_board = [[' '] * 8 for i in range(8)]
 # Board for displaying hits and misses
-guess_board = [[' '] * 8 for i in range(8)]
+player_guess_board = [[' '] * 8 for i in range(8)]
+computer_guess_board = [[' '] * 8 for i in range(8)]
 #Convert letter inputs to numbers
 letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
 
@@ -11,6 +13,7 @@ def get_rules():
     print('The rules:')
     print('Choose the number of turns you want to start with, the more turns the easier the game')
     print("When prompted, enter the coordinates of where you think you're opponents battleship is to shoot at it")
+    print('O = Miss and X = Hit')
     print('When all of either you or your opponents battleships are sunk, the game ends')
     print('Be mindful of how many turns you have remaining, if you fail to sink all of the opponents battleships before you run out of turns, you lose')
     play = input('Press the enter key to start the game!')
@@ -71,37 +74,55 @@ def determine_turns():
     global turns
     print("Enter the number of turns you want to start with 1-10: ")
     turns = input()
-    while turns not in '1,2,3,4,5,6,7,8,9,10' or len(turns) == 0:
+    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40' or len(turns) == 0:
         print('Invalid input, please enter a number 1-10')
         print("Enter the number of turns you want to start with 1-10: ")
         turns = input()
     turns = int(turns)
 
+def play_again():
+    """
+    Play the game again or exit program on user input
+    """
+    play_again = input('Would you like to play again? Type yes or no then press enter: ')
+    while True:
+        if play_again == 'yes':
+            welcome()
+        elif play_again == 'no':
+            break
+        else:
+            print('Invalid input')
+            play_again = input('Would you like to play again? Type yes or no then press enter: ')
+
+
 def main():
-    create_ships(hidden_board)
+    """
+    Main function for playing the game
+    """
+    create_ships(computer_board)
     determine_turns()
     global turns
     while turns > 0:
-        print('O = Miss and X = Hit')
         print('Guess a battleship location')
-        print_board(guess_board)
+        print_board(player_guess_board)
         row, column = get_ship_location()
-        if guess_board[row][column] == "O":
+        if player_guess_board[row][column] == "O":
             print("You already guessed that location.")
-        elif hidden_board[row][column] == "X":
+        elif computer_board[row][column] == "X":
             print("You hit a battleship!")
-            guess_board[row][column] = "X" 
+            player_guess_board[row][column] = "X" 
             turns -= 1  
         else:
             print("Sorry, you missed.")
-            guess_board[row][column] = "O"   
+            player_guess_board[row][column] = "O"   
             turns -= 1     
-        if count_hit_ships(guess_board) == 5:
+        if count_hit_ships(player_guess_board) == 5:
             print("Congratulations, you sank all of the computer's battleships!")
-            break
+            play_again()
         print(f"You have {turns} turns left")
         if turns == 0:
             print("Sorry, you have no turns left, Game Over.")
+            play_again()
 
 def welcome():
     """
