@@ -1,9 +1,9 @@
 from random import randint
 
-#Board for holding ship locations
+#Player and Computer boards for holding ship locations
 player_board = [[' '] * 8 for i in range(8)]
 computer_board = [[' '] * 8 for i in range(8)]
-# Board for displaying hits and misses
+# Player and Computer boards for displaying hits and misses
 player_guess_board = [[' '] * 8 for i in range(8)]
 computer_guess_board = [[' '] * 8 for i in range(8)]
 #Convert letter inputs to numbers
@@ -22,7 +22,7 @@ def get_rules():
 
 def print_board(board):
     """
-    Print the game board to the console
+    Print the game board to the console.
     """
     print('  A B C D E F G H')
     print('  +-+-+-+-+-+-+-+')
@@ -31,7 +31,7 @@ def print_board(board):
         print('%d|%s|' % (row_number, '|'.join(row)))
         row_number += 1
 
-def create_ships(board):
+def create_computer_ships(board):
     """
     Create and place 5 ships on the board
     """
@@ -41,10 +41,34 @@ def create_ships(board):
             ship_row, ship_column = get_ship_location()
         board[ship_row][ship_column] = 'X'
 
+def place_player_ships(board):
+    """
+    Place ships on the player board on user input.
+    """
+    for ship in range(5):
+        ship_row = input('Please enter the row of your ship: ')
+        while ship_row not in '12345678' or len(ship_row) == 0:
+            print('Invalid input, please enter a number 1-8')
+            ship_row = input('Please enter the row of your ship: ')
+        ship_column = input('Please enter the column of your ship: ').upper()
+        while ship_column not in 'ABCDEFGH' or len(ship_column) == 0:
+            print('Invalid input, please enter a letter A-H')
+            ship_column = input('Please enter the column of your ship: ').upper()
+        ship_row = int(ship_row) -1
+        ship_column = letters_to_numbers[ship_column]
+        while board[ship_row][ship_column] == 'X':
+            print('You have already placed a ship there, please enter different coordinates')
+            ship_row, ship_column = input('Please enter the row of your ship: '), input('Please enter the column of your ship: ').upper()
+            ship_row = int(ship_row) -1
+            ship_column = letters_to_numbers[ship_column]
+        board[ship_row][ship_column] = 'X'
+        print_board(player_board)
+
 def get_ship_location():
     """
-    Get user input for ship location guesses
-    Upper method used to convert input to match dictionary key
+    Get user input for ship location guesses.
+    upper method used to convert input to match 
+    letters_to_numbers dictionary key.
     """
     row = input('Enter the row of the ship: ')
     while row not in '12345678' or len(row) == 0:
@@ -58,7 +82,7 @@ def get_ship_location():
 
 def count_hit_ships(board):
     """
-    Check for number of hit ships
+    Check for number of hit ships.
     """
     count = 0
     for row in board:
@@ -69,7 +93,7 @@ def count_hit_ships(board):
 
 def determine_turns():
     """
-    Determine the starting number of turns
+    Determine the starting number of turns.
     """
     global turns
     print("Enter the number of turns you want to start with 1-10: ")
@@ -82,7 +106,7 @@ def determine_turns():
 
 def play_again():
     """
-    Play the game again or exit program on user input
+    Play the game again or exit program on user input.
     """
     play_again = input('Would you like to play again? Type yes or no then press enter: ')
     while True:
@@ -97,10 +121,11 @@ def play_again():
 
 def main():
     """
-    Main function for playing the game
+    Main function for playing the game.
     """
-    create_ships(computer_board)
     determine_turns()
+    create_computer_ships(computer_board)
+    place_player_ships(player_board)
     global turns
     while turns > 0:
         print('Guess a battleship location')
@@ -126,8 +151,8 @@ def main():
 
 def welcome():
     """
-    Welcome message displays on program load
-    Gives option to show rules or play game
+    Welcome message displays on program load.
+    Gives option to show rules or play game.
     """
     print('Welcome to Battleships!')
     print(r"""
