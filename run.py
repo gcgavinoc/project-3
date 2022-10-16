@@ -1,16 +1,18 @@
 from random import randint
 import sys
 
-#Player and Computer boards for holding ship locations
+# Player and Computer boards for holding ship locations
 player_board = [[' '] * 8 for i in range(8)]
 computer_board = [[' '] * 8 for i in range(8)]
 # Player and Computer boards for displaying hits and misses
 player_guess_board = [[' '] * 8 for i in range(8)]
 computer_guess_board = [[' '] * 8 for i in range(8)]
-#Convert letter inputs to numbers
-letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
-#Convert number from randint to letters
-numbers_to_letters = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H'}
+# Convert letter inputs to numbers
+letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3,
+                      'E': 4, 'F': 5, 'G': 6, 'H': 7}
+# Convert number from randint to letters
+numbers_to_letters = {0: 'A', 1: 'B', 2: 'C', 3: 'D',
+                      4: 'E', 5: 'F', 6: 'G', 7: 'H'}
 
 
 def get_rules():
@@ -19,11 +21,18 @@ def get_rules():
     and play game on user pressing enter key
     """
     print('The rules:')
-    print('Choose the number of turns you want to start with, the more turns the easier the game')
-    print("When prompted, enter the coordinates of where you think you're opponents battleship is to shoot at it")
+    print('Choose the number of turns you want\
+ to start with,\nthe more turns the easier the game.')
+    print('First, when prompted, enter the coordinates of where you want to\
+ place your ships')
+    print("Then, when prompted, enter the coordinates of where you think\
+ you're\nopponents battleship is to shoot at it.")
     print('O = Miss and X = Hit')
-    print('When all of either you or your opponents battleships are sunk, the game ends')
-    print('Be mindful of how many turns you have remaining, if you fail to sink all of the opponents battleships before you run out of turns, you lose')
+    print('When all of either you or your opponents battleships are sunk,\
+ the game ends.')
+    print('Be mindful of how many turns you have remaining,\nif you fail to\
+ sink all of the opponents battleships\nbefore you run out\
+ of turns, you lose.')
     play = input('Press the enter key to start the game!')
     while play in '':
         main()
@@ -46,7 +55,7 @@ def create_computer_ships(board):
     Create and place 5 ships on the board
     """
     for ship in range(5):
-        ship_row, ship_column = randint(0,7), randint(0,7)
+        ship_row, ship_column = randint(0, 7), randint(0, 7)
         while board[ship_row][ship_column] == 'X':
             ship_row, ship_column = get_ship_location()
         board[ship_row][ship_column] = 'X'
@@ -64,12 +73,16 @@ def place_player_ships(board):
         ship_column = input('Please enter the column of your ship: ').upper()
         while ship_column not in 'ABCDEFGH' or len(ship_column) == 0:
             print('Invalid input, please enter a letter A-H')
-            ship_column = input('Please enter the column of your ship: ').upper()
+            ship_column = input('Please enter the column\
+ of your ship: ').upper()
         ship_row = int(ship_row) - 1
         ship_column = letters_to_numbers[ship_column]
         while board[ship_row][ship_column] == 'X':
-            print('You have already placed a ship there, please enter different coordinates')
-            ship_row, ship_column = input('Please enter the row of your ship: '), input('Please enter the column of your ship: ').upper()
+            print('You have already placed a ship there, please enter\
+ different coordinates')
+            ship_row, ship_column = input('Please enter the row of your\
+ ship: '), input('Please enter the\
+ column of your ship: ').upper()
             ship_row = int(ship_row) - 1
             ship_column = letters_to_numbers[ship_column]
         board[ship_row][ship_column] = 'X'
@@ -97,7 +110,7 @@ def computer_turn():
     """
     Computer guesses ship location on player board
     """
-    row, column = randint(0,7), randint(0,7)
+    row, column = randint(0, 7), randint(0, 7)
     return row, column
 
 
@@ -121,7 +134,10 @@ def determine_turns():
     global turns
     print("Enter the number of turns you want to start with 1-60: ")
     turns = input()
-    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60' or len(turns) == 0:
+    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,\
+22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,\
+40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,\
+58,59,60' or len(turns) == 0:
         print('Invalid input, please enter a number 1-60')
         print("Enter the number of turns you want to start with 1-60: ")
         turns = input()
@@ -144,7 +160,8 @@ def play_again():
     """
     Play the game again or exit program on user input.
     """
-    play_again = input('Would you like to play again? Type yes or no then press enter: ')
+    play_again = input('Would you like to play again? Type yes or no then\
+ press enter: ')
     while True:
         if play_again == 'yes':
             clear_boards(player_board)
@@ -156,7 +173,8 @@ def play_again():
             sys.exit('Thank you for playing!')
         else:
             print('Invalid input')
-            play_again = input('Would you like to play again? Type yes or no then press enter: ')
+            play_again = input('Would you like to play again? Type yes or no\
+ then press enter: ')
 
 
 def main():
@@ -192,7 +210,8 @@ def main():
             player_guess_board[row][column] = 'O'   
             turns -= 1     
         if count_hit_ships(player_guess_board) == 5:
-            print("Congratulations, you sank all of the computer's battleships!")
+            print("Congratulations, you sank all of the computer's\
+ battleships!")
             play_again()
         computer_row, computer_column = computer_turn()
         while True:
@@ -238,7 +257,8 @@ def welcome():
     ^^^^      ^^^^     ^^^    ^^
          ^^^^      ^^^
     """)
-    start = input('Press enter to play the game or type rules and press enter to see the rules: ')
+    start = input('Press enter to play the game\nor type rules and press enter\
+ to see the rules: ')
     if start not in 'rules' or len(start) == 0:
         main()
     else:
