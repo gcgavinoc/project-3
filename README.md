@@ -14,11 +14,11 @@ You can access the live game [here](https://ci-project-3-gavin.herokuapp.com/).
 [How to Play](#how-to-play)
 
 [Features](#features)
- - [Welcome screen](#welcome-screen)
+ - [Welcome message](#welcome-message)
  - [Rules screen](#rules-screen)
  - [Choose turns](#choose-turns)
  - [Place ships](#place-ships)
- - [Player and computer guesses](#guesses)
+ - [Player and computer guesses](#player-and-computer-guesses)
  - [Play again](#play-again)
 
 [Validation](#validation)
@@ -76,6 +76,97 @@ Once the player enters the amount of turns they want, they are asked to enter th
 
 If the player hits all five of the computers battleships they will be told 'Congratulations, you sank all of the computer's battleships' and they are then asked if they want to play again. if they enter yes, the game starts over again from the welcome screen and the game boards are wiped of all markers. If they enter no a message 'Thank you for playing!' appears and the program quits running. If the computer hits all five of the players battleships the message 'The computer sank all of your battleships, you lose!' appears and the player is asked if they want to play again. If the player runs out of lives before either the player or computers battleships are all sunk, then the message 'Sorry, you have no turns left, Game Over' appears and the player is asked if they want to play again.
 
+# Features
+[Go to top](#table-of-contents)
+
+## Welcome message
+[Go to top](#table-of-contents)
+
+Upon starting the program, a welcome message appears welcoming the user to the game, displaying ascii art of a ship, and asking the player to type 'rules' to see the rules or hit enter to start the game.
+
+![Image of the welcome message for the game](assets/images/features-welcome.png)
+
+## Rules screen
+[Go to top](#table-of-contents)
+
+If the user typed rules when prompted on the welcome message screen and hit enter, the rules for the game will display in the terminal. The rules appear in order, going step by step through what will happen when they play the game and what they must do at each step.
+
+![Image of the rules screen for the game](assets/images/features-rules.png)
+
+## Choose turns
+[Go to top](#table-of-contents)
+
+After hitting enter to play the game, the user is prompted to enter the number of turns they want to start the game with. The more turns they start with the easier the game is as they will have more turns to guess all five of the computers battleships. The amount of turns they can choose from are capped at 60. The game boards have 64 spaces so 60 turns allows the user to make the game much easier for themselves without eliminating the threat of running out of lives entirely.
+
+![Image of the prompt asking the user to enter the amount of turns they want to start the game with](assets/images/features-turns.png)
+
+## Place ships
+[Go to top](#table-of-contents)
+
+After the user chooses how many turns they want to start the game with, they are then asked to enter the row number and column letter they want to place their ship in. They are asked this five times until all five of their ships are placed.
+
+![Image of the user being prompted to enter the coordinates of their ship](assets/images/features-place-ships.png)
+
+## Player and Computer guesses
+[Go to top](#table-of-contents)
+
+After the user has placed all five of their ships, the player and computer boards are printed to the terminal that will mark the spots where the players guessed on each turn, and whether those guesses were hits or misses. The user will then be prompted to guess the location of the computers battleships by entering a row number and column letter.
+
+![Image of the player and computer guess boards and prompts asking the user to guess the location of the computers battleships](assets/images/features-game-boards.png)
+
+After the user makes their guess, the computer does as well and then the boards will print again on the next turn showing a hit or miss mark from all previous guesses, hits are marked with an X and misses are marked with an O. The user is then prompted to make their next guess.
+
+![Image of the player and computer guess boards with hit and miss marks](assets/images/features-hits-and-misses-boards.png)
+
+When the player and computer make their guesses, text will display showing if the player hit or missed, the coordinates of where the computer guessed and whether they hit or missed, and how many turns the user now has remaining.
+
+![Image of the text that displays when the computer and player make their guesses and whether they hit or missed](assets/images/features-hits-and-misses-text.png)
+
+## Play again
+[Go to top](#table-of-contents)
+
+If the user sinks all of the computers battleships, has all of their battleships sunk by the computer, or runs out of turns a prompt will appears asking the user if they want to play again. If they type yes then the game will return to the welcome message screen. If they type no then the terminal will display a thank you message and the program will exit.
+
+![Image of the play again prompt](assets/images/features-no-turns-left.png)
+
+![Image of the message that displays if the user enters no to the play again prompt](assets/images/features-thank-you-for-playing.png)
+
+# Validation
+[Go to top](#table-of-contents)
+
+## Rules validation
+[Go to top](#table-of-contents)
+
+When prompted to press enter to play the game or type rules then press enter to see the rules, if the user types any of the letters within the word 'rules', then the rules screen will be displayed. This is to combat typos. If the user spells rules incorrectly the rules screen will still appear, as opposed to the user being pushed into the game even though they don't know the rules. As it is not possible to go back a step in the terminal, this was the best solution. If the user types anything that does not appear in the word 'rules' and presses enter, the game will start. An input error message was not necessary here as besides anything in the word 'rules', whatever the user enters here is irrelevant from that point on in the game. So if the user accidentally hits a key on their keyboard and then presses enter, the game will still play.
+
+## Turns validation
+[Go to top](#table-of-contents)
+
+When prompted to enter the number of turns they want to start the game with, if the user enters any value that is not a number between 1-60 then an error message will display and the user will be asked to enter the number of turns again. If the user presses the enter key without entering any value, the same error message will display as well.
+
+![Image showing the error message if the user enters an invalid value when prompted to enter the number of turns they want](assets/images/validation-turns.png)
+
+## Place ships validation
+[Go to top](#table-of-contents)
+
+When prompted to enter the row and column of where they want to place their battleships, the user must enter a number 1-8 for the row and a letter a-h for the column. If the user enters anything else or presses the enter key without typing a value then an error message will display and they will be asked to enter the row or column again. The user is allowed to enter a lower case letter for the column as an upper method in the code will change it to an uppercase letter in the back end.
+
+![Image showing the error message that displays if the users enters an invalid value when prompted to place their ships](assets/images/validation-place-ships.png)
+
+## Guess validation
+[Go to top](#table-of-contents)
+
+When prompted to guess the row and column of the computers battleships, the user must enter a number 1-8 for the row and a letter a-h for the column. If the user enters anything else or presses the enter key without typing a value then an error message will display and they will be asked to enter the row or column again.
+
+![Image showing the error message that displays if the users enters an invalid value when prompted to place their ships](assets/images/validation-guesses.png)
+
+## Play again validation
+[Go to top](#table-of-contents)
+
+When the user is prompted if they want to play the game again, they must enter yes or no. If they enter anything else or press the enter key without typing anything, an error message will appear and the prompt will ask them again to enter yes or no.
+
+![Image showing the error message that displays when the user enters an invalid value when asked if they want to play again](assets/images/validation-play-again.png)
+
 # Testing
 [Go to top](#table-of-contents)
 
@@ -104,10 +195,10 @@ I also ran through the game using the final code with various amounts of turns i
 # Technologies used
 [Go to top](#table-of-contents)
 
-[Github](https://github.com/) was used to create the repository that hosts the site and to store the project's code after it was pushed from Git.
-[Gitpod](https://gitpod.io/workspaces) was used as the Code Editor used for the site.
-[Heroku](https://www.heroku.com) was used to host the game terminal and game code as an app
-[Am I Responsive](https://ui.dev/amiresponsive) was used to display what the game looks like on various screen sizes
+ - [Github](https://github.com/) was used to create the repository that hosts the site and to store the project's code after it was pushed from Git.
+ - [Gitpod](https://gitpod.io/workspaces) was used as the Code Editor used for the site.
+ - [Heroku](https://www.heroku.com) was used to host the game terminal and game code as an app
+ - [Am I Responsive](https://ui.dev/amiresponsive) was used to display what the game looks like on various screen sizes
 
 # Deployment
 [Go to top](#table-of-contents)
@@ -136,6 +227,53 @@ These are the deployment steps:
 18. Click repository 'project-3' that appears, click 'Connect'
 19. Scroll down, under 'Choose a branch to deploy' ensure 'main' is selected
 20. Click 'Deploy Branch', then 'View' when deployment is complete
+
+# Project screenshots
+[Go to top](#table-of-contents)
+
+Welcome message
+
+![Image of the welcome message](assets/images/features-welcome.png)
+
+Rules
+
+![Image of the rules](assets/images/features-rules.png)
+
+Enter the amount of game turns to start the game with
+
+![Image showing the prompt asking how many turns the user wants to start the game with](assets/images/features-turns.png)
+
+Enter the coordinates of where the user would like to place their battleships
+
+![Image showing prompt asking the user to enter the coordinates of where they want to place their battleships](assets/images/features-place-ships.png)
+
+Guess the location of the computers battleships
+
+![Image showing the game boards for showing guesses and the prompt asking the user to guess the location of the computers battleships](assets/images/features-game-boards.png)
+
+The player and computer boards are printed each turn showing hits and misses from all previous guesses. Hits are marked with an X and misses are marked with an O.
+
+![Image showing game boards with hit and miss marks](assets/images/features-hits-and-misses-boards.png)
+
+Text displays after the user makes their guess showing if they hit or missed, what coordinates the computer guessed and if they hit or missed, and how many turns are remaining.
+
+![Image showing text of outcome of player and computer guesses and how many turns remain](assets/images/features-hits-and-misses-text.png)
+
+If the user hits all of the computers battleships, a win message appears and a prompt asking the user if they want to play again.
+
+![Image of the win screen](assets/images/features-win-screen.png)
+
+If the computer sinks all of the users battleships, then a lose message appears and a prompt asking the user if they want to play again.
+
+![Image of the lose screen](assets/images/features-lose-screen.png)
+
+If the user runs out of turns, then a lose message appears and a prompt asking the user if they want to play again.
+
+![Image of the lose screen if the user runs out of turns](assets/images/features-no-turns-left.png)
+
+If the user enters yes to the play again prompt, then the welcome message screen is displayed again, if the user enters no to the play again prompt a thank you for playing message displays.
+
+![Image of the message that displays if the user enters no to the play again prompt](assets/images/features-thank-you-for-playing.png)
 
 # Acknowledgements
 [Go to top](#table-of-contents)
