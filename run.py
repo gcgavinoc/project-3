@@ -21,16 +21,16 @@ def get_rules():
     and play game on user pressing enter key
     """
     print('The rules:')
-    print('Choose the number of turns you want\
+    print('- Choose the number of turns you want\
  to start with,\nthe more turns the easier the game.')
-    print('First, when prompted, enter the coordinates\nof where you want to\
+    print('- First, when prompted, enter the coordinates\nof where you want to\
  place your ships, you and your opponent have 5 ships each.')
-    print("Then, when prompted, enter the coordinates of where you think\
+    print("- Then, when prompted, enter the coordinates of where you think\
  you're\nopponents battleship is to shoot at it.")
-    print('O = Miss and X = Hit')
-    print('When all of either you or your opponents battleships are sunk,\
+    print('- Hit = X and Miss = O')
+    print('- When all of either you or your opponents battleships are sunk,\
  the game ends.')
-    print('Be mindful of how many turns you have remaining,\nif you fail to\
+    print('- Be mindful of how many turns you have remaining,\nif you fail to\
  sink all of the opponents battleships\nbefore you run out\
  of turns, you lose.')
     play = input('Press the enter key to start the game!')
