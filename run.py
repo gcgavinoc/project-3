@@ -66,11 +66,12 @@ def place_player_ships(board):
     Place ships on the player board on user input.
     """
     for ship in range(5):
-        ship_row = input('Please enter the row of your ship: ')
+        ship_row = input('Please enter the row number 1-8 of your ship: ')
         while ship_row not in '12345678' or len(ship_row) == 0:
             print('Invalid input, please enter a number 1-8')
             ship_row = input('Please enter the row of your ship: ')
-        ship_column = input('Please enter the column of your ship: ').upper()
+        ship_column = input('Please enter the column letter A-H of\
+ your ship: ').upper()
         while ship_column not in 'ABCDEFGH' or len(ship_column) == 0:
             print('Invalid input, please enter a letter A-H')
             ship_column = input('Please enter the column\
@@ -95,11 +96,11 @@ def get_ship_location():
     upper method used to convert input to match 
     letters_to_numbers dictionary key.
     """
-    row = input('Enter the row of the ship: ')
+    row = input('Enter the row number 1-8 of the ship: ')
     while row not in '12345678' or len(row) == 0:
         print('Invalid input, please enter a number 1-8')
         row = input('Enter the row of the ship: ')
-    column = input("Enter the column of the ship: ").upper()
+    column = input("Enter the column letter A-H of the ship: ").upper()
     while column not in 'ABCDEFGH' or len(column) == 0:
         print('Invalid input, please enter a letter A-H')
         column = input('Enter the column of the ship: ').upper()
