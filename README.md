@@ -32,6 +32,8 @@ You can access the live game [here](https://ci-project-3-gavin.herokuapp.com/).
  - [PEP8](#pep8)
  - [Manual testing](#manual-testing)
 
+[Bugs](#bugs)
+
 [Technologies used](#technologies-used)
 
 [Deployment](#deployment)
@@ -191,6 +193,11 @@ After I resolved the above problems, the python validator showed no red 'importa
 I manually tested if the game was working correctly using various different methods. The first method was to enter 1 turn when prompted by the game. This would allow me to test the end of game screen and messages/inputs quickly without having to play the game for too long each time. The second method was to change the required score for the player and computer to win the game from 5 to 1. Again, this made testing the win and lose screens alot quicker and easier as I only had to play until 1 battleship was hit by either player as opposed to 5. To make this process even quicker, I temporarily added code to print the computers board to the terminal, so that I could see exactly where the computers battleships were located and guess the ships easily and quickly. 
 
 I also ran through the game using the final code with various amounts of turns inputted to ensure the normal game experience functioned correctly. I did this on both Gitpod and Heroku numerous times through the project creation process and again upon project completion. Incorrect inputs were entered every time an input was requested to test input validation, changes to the game code were made whenever the program crashed from an invalid input.
+
+# Bugs
+[Go to top](#table-of-contents)
+
+In order to properly play the game after entering yes to the play again prompt, all hit and miss marks must be cleared from the game boards. I attempted to accomplish this by using the same method I used to count the number of hit 'X' markers on both players guess boards. The difference is that instead of counting the X markers, I would have the function replace them with an empty space. The same for the miss 'O' markers. Thus the boards would be cleared of all markers and the game could be played again from scratch. Unfortunately, my function would not clear the markers and after trying many other methods and variations of this function, I have accepted that this issue will require more knowledge and experience with Python than I currently possess. Therefore the bug remains, but I plan to return to this project to fix it at a later date.
 
 # Technologies used
 [Go to top](#table-of-contents)
