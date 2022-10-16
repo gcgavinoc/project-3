@@ -1,4 +1,5 @@
 from random import randint
+import sys
 
 #Player and Computer boards for holding ship locations
 player_board = [[' '] * 8 for i in range(8)]
@@ -110,6 +111,7 @@ def count_hit_ships(board):
             if column == 'X':
                 count += 1
     return count
+    print(count)
 
 
 def determine_turns():
@@ -151,7 +153,7 @@ def play_again():
             clear_boards(computer_guess_board)
             welcome()
         elif play_again == 'no':
-            break
+            sys.exit('Thank you for playing!')
         else:
             print('Invalid input')
             play_again = input('Would you like to play again? Type yes or no then press enter: ')
