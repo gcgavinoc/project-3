@@ -24,7 +24,7 @@ def get_rules():
     print('Choose the number of turns you want\
  to start with,\nthe more turns the easier the game.')
     print('First, when prompted, enter the coordinates\nof where you want to\
- place your ships, you and your opponent have 5 ships each')
+ place your ships, you and your opponent have 5 ships each.')
     print("Then, when prompted, enter the coordinates of where you think\
  you're\nopponents battleship is to shoot at it.")
     print('O = Miss and X = Hit')
