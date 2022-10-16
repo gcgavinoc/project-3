@@ -261,7 +261,7 @@ def main():
         if count_hit_ships(computer_guess_board) == 5:
             print('The computer sank all of your Battleships, you lose!')
             play_again()
-        print(f'You have {turns} turns left')
+        print(f'You have {turns} turns left\n')
         if turns == 0:
             print('Sorry, you have no turns left, Game Over.')
             play_again()
