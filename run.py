@@ -21,18 +21,28 @@ def get_rules():
     and play game on user pressing enter key
     """
     print('The rules:')
-    print('- Choose the number of turns you want\
- to start with,\nthe more turns the easier the game.')
-    print('- First, when prompted, enter the coordinates\nof where you want to\
- place your ships, you and your opponent have 5 ships each.')
-    print("- Then, when prompted, enter the coordinates of where you think\
- you're\nopponents battleship is to shoot at it.")
+    print(
+          '- Choose the number of turns you want'
+          ' to start with,\nthe more turns the easier the game.'
+         )
+    print(
+          '- First, when prompted, enter the coordinates\nof where you want to'
+          ' place your ships, you and your opponent have 5 ships each.'
+         )
+    print(
+          "- Then, when prompted, enter the coordinates of where you think"
+          " you're\nopponents battleship is to shoot at it."
+         )
     print('- Hit = X and Miss = O')
-    print('- When all of either you or your opponents battleships are sunk,\
- the game ends.')
-    print('- Be mindful of how many turns you have remaining,\nif you fail to\
- sink all of the opponents battleships\nbefore you run out\
- of turns, you lose.')
+    print(
+          '- When all of either you or your opponents battleships are sunk,'
+          ' the game ends.'
+         )
+    print(
+          '- Be mindful of how many turns you have remaining,\nif you fail to'
+          ' sink all of the opponents battleships\nbefore you run out'
+          ' of turns, you lose.\n'
+         )
     play = input('Press the enter key to start the game!')
     while play in '':
         main()
@@ -70,20 +80,30 @@ def place_player_ships(board):
         while ship_row not in '12345678' or len(ship_row) == 0:
             print('Invalid input, please enter a number 1-8')
             ship_row = input('Please enter the row of your ship: ')
-        ship_column = input('Please enter the column letter A-H of\
- your ship: ').upper()
+        ship_column = input(
+                            'Please enter the column letter A-H of'
+                            ' your ship: '
+                           ).upper()
         while ship_column not in 'ABCDEFGH' or len(ship_column) == 0:
             print('Invalid input, please enter a letter A-H')
-            ship_column = input('Please enter the column\
- of your ship: ').upper()
+            ship_column = input(
+                                'Please enter the column'
+                                ' of your ship: '
+                               ).upper()
         ship_row = int(ship_row) - 1
         ship_column = letters_to_numbers[ship_column]
         while board[ship_row][ship_column] == 'X':
-            print('You have already placed a ship there, please enter\
- different coordinates')
-            ship_row, ship_column = input('Please enter the row of your\
- ship: '), input('Please enter the\
- column of your ship: ').upper()
+            print(
+                  'You have already placed a ship there, please enter'
+                  ' different coordinates'
+                 )
+            ship_row, ship_column = input(
+                                          'Please enter the row of your'
+                                          ' ship: '
+                                         ), input(
+                                                  'Please enter the'
+                                                  ' column of your ship: '
+                                                 ).upper()
             ship_row = int(ship_row) - 1
             ship_column = letters_to_numbers[ship_column]
         board[ship_row][ship_column] = 'X'
@@ -161,8 +181,10 @@ def play_again():
     """
     Play the game again or exit program on user input.
     """
-    play_again = input('Would you like to play again? Type yes or no then\
- press enter: ')
+    play_again = input(
+        'Would you like to play again? Type yes or no then'
+        ' press enter: '
+    )
     while True:
         if play_again == 'yes':
             clear_boards(player_board)
@@ -174,8 +196,10 @@ def play_again():
             sys.exit('Thank you for playing!')
         else:
             print('Invalid input')
-            play_again = input('Would you like to play again? Type yes or no\
- then press enter: ')
+            play_again = input(
+                'Would you like to play again? Type yes or no'
+                ' then press enter: '
+            )
 
 
 def main():
@@ -208,11 +232,13 @@ def main():
             turns -= 1  
         else:
             print('Sorry, you missed.')
-            player_guess_board[row][column] = 'O'   
+            player_guess_board[row][column] = 'O'  
             turns -= 1     
         if count_hit_ships(player_guess_board) == 5:
-            print("Congratulations, you sank all of the computer's\
- battleships!")
+            print(
+                  "Congratulations, you sank all of the computer's"
+                  " battleships!"
+                 )
             play_again()
         computer_row, computer_column = computer_turn()
         while True:
@@ -258,8 +284,10 @@ def welcome():
     ^^^^      ^^^^     ^^^    ^^
          ^^^^      ^^^
     """)
-    start = input('Press enter to play the game\nor type rules and press enter\
- to see the rules: ')
+    start = input(
+                  'Press enter to play the game\nor type rules and press enter'
+                  ' to see the rules: \n'
+                 )
     if start not in 'rules' or len(start) == 0:
         main()
     else:

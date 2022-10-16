@@ -32,6 +32,8 @@ You can access the live game [here](https://ci-project-3-gavin.herokuapp.com/).
  - [PEP8](#pep8)
  - [Manual testing](#manual-testing)
 
+[Technologies used](#technologies-used)
+
 [Deployment](#deployment)
 
 [Project Screenshots](#project-screenshots)
@@ -95,7 +97,17 @@ After I resolved the above problems, the python validator showed no red 'importa
 ## Manual Testing
 [Go to top](#table-of-contents)
 
-I manually tested if the game was working correctly using various different methods. The first method was to enter 1 turn when prompted by the game. This would allow me to test the end of game screen and messages/inputs quickly without having to play the game for too long each time. The second method was to change the required score for the player and computer to win the game from 5 to 1. Again, this made testing the win and lose screens alot quicker and easier as I only had to play until 1 battleship was hit by either player as opposed to 5. To make this process even quicker, I temporarily added code to print the computers board to the terminal, so that I could see exactly where the computers battleships were located and guess the ships easily and quickly. I also ran through the game using the final code with various amounts of turns inputted to ensure the normal game experience functioned correctly. I did this on both Gitpod and Heroku numerous times through the project creation process and again upon project completion. Incorrect inputs were entered every time an input was requested to test input validation, changes to the game code were made whenever the program crashed from an invalid input.
+I manually tested if the game was working correctly using various different methods. The first method was to enter 1 turn when prompted by the game. This would allow me to test the end of game screen and messages/inputs quickly without having to play the game for too long each time. The second method was to change the required score for the player and computer to win the game from 5 to 1. Again, this made testing the win and lose screens alot quicker and easier as I only had to play until 1 battleship was hit by either player as opposed to 5. To make this process even quicker, I temporarily added code to print the computers board to the terminal, so that I could see exactly where the computers battleships were located and guess the ships easily and quickly. 
+
+I also ran through the game using the final code with various amounts of turns inputted to ensure the normal game experience functioned correctly. I did this on both Gitpod and Heroku numerous times through the project creation process and again upon project completion. Incorrect inputs were entered every time an input was requested to test input validation, changes to the game code were made whenever the program crashed from an invalid input.
+
+# Technologies used
+[Go to top](#table-of-contents)
+
+[Github](https://github.com/) was used to create the repository that hosts the site and to store the project's code after it was pushed from Git.
+[Gitpod](https://gitpod.io/workspaces) was used as the Code Editor used for the site.
+[Heroku](https://www.heroku.com) was used to host the game terminal and game code as an app
+[Am I Responsive](https://ui.dev/amiresponsive) was used to display what the game looks like on various screen sizes
 
 # Deployment
 [Go to top](#table-of-contents)
@@ -132,4 +144,5 @@ These are the deployment steps:
  - Solution for when input is empty found [here](https://stackoverflow.com/questions/26247729/how-do-i-get-python-to-recognize-that-there-has-been-no-input)
  - Ascii artwork for welcome message found [here](https://asciiart.website/index.php?art=transportation/nautical)
  - How to print ascii art to the terminal found [here](https://stackoverflow.com/questions/23623288/print-full-ascii-art)
+ - Function randint imported from random and sys imported
  - Many thanks to my mentor Marcel for his help and guidance
