@@ -13,7 +13,9 @@ letters_to_numbers = {'A': 0, 'B': 1, 'C': 2, 'D': 3,
 # Convert number from randint to letters
 numbers_to_letters = {0: 'A', 1: 'B', 2: 'C', 3: 'D',
                       4: 'E', 5: 'F', 6: 'G', 7: 'H'}
-
+allowed_turns = []
+for i in range(1,61):
+    allowed_turns.append(str(i))
 
 def get_rules():
     """
@@ -117,11 +119,11 @@ def get_ship_location():
     letters_to_numbers dictionary key.
     """
     row = input('Enter the row number 1-8 of the ship: ')
-    while row not in '12345678' or len(row) == 0:
+    while row not in ['1', '2', '3', '4', '5', '6', '7', '8']:
         print('Invalid input, please enter a number 1-8')
         row = input('Enter the row of the ship: ')
     column = input("Enter the column letter A-H of the ship: ").upper()
-    while column not in 'ABCDEFGH' or len(column) == 0:
+    while column not in ['A','B','C','D','E','F','G','H']:
         print('Invalid input, please enter a letter A-H')
         column = input('Enter the column of the ship: ').upper()
     return int(row) - 1, letters_to_numbers[column]
@@ -155,10 +157,7 @@ def determine_turns():
     global turns
     print("Enter the number of turns you want to start with 1-60: ")
     turns = input()
-    while turns not in '1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,\
-22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,\
-40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,\
-58,59,60' or len(turns) == 0:
+    while turns not in allowed_turns:
         print('Invalid input, please enter a number 1-60')
         print("Enter the number of turns you want to start with 1-60: ")
         turns = input()
