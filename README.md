@@ -32,7 +32,7 @@ You can access the live game [here](https://ci-project-3-gavin.herokuapp.com/).
  - [PEP8](#pep8)
  - [Manual testing](#manual-testing)
 
-[Bugs](#bugs)
+[Solved Bugs](#solved-bugs)
 
 [Technologies used](#technologies-used)
 
@@ -194,10 +194,10 @@ I manually tested if the game was working correctly using various different meth
 
 I also ran through the game using the final code with various amounts of turns inputted to ensure the normal game experience functioned correctly. I did this on both Gitpod and Heroku numerous times through the project creation process and again upon project completion. Incorrect inputs were entered every time an input was requested to test input validation, changes to the game code were made whenever the program crashed from an invalid input.
 
-# Bugs
+# Solved Bugs
 [Go to top](#table-of-contents)
 
-In order to properly play the game after entering yes to the play again prompt, all hit and miss marks must be cleared from the game boards. I attempted to accomplish this by using the same method I used to count the number of hit 'X' markers on both players guess boards. The difference is that instead of counting the X markers, I would have the function replace them with an empty space. The same for the miss 'O' markers. Thus the boards would be cleared of all markers and the game could be played again from scratch. Unfortunately, my function would not clear the markers and after trying many other methods and variations of this function, I have accepted that this issue will require more knowledge and experience with Python than I currently possess. Therefore the bug remains, but I plan to return to this project to fix it at a later date.
+In order to properly play the game after entering yes to the play again prompt, all hit and miss marks must be cleared from the game boards. I attempted to accomplish this by using the same method I used to count the number of hit 'X' markers on both players guess boards. The difference is that instead of counting the X markers, I would have the function replace them with an empty space. The same for the miss 'O' markers. Thus the boards would be cleared of all markers and the game could be played again from scratch. Initially my solution did not work and the X markers remained on the boards even after the game was played again. After submitting this project to Code Institute for evaluation, I received feedback that this would need to be fixed to make the game work completely. With the help of my mentor, I managed to fix this bug by setting some variables to global, allowing the game boards to be fully cleared once the player said 'yes' to the replay game option. Having this bug fixed has now allowed the game to be played, completed, and replayed as much as the player wants with no interruptions and has given me great insight into the process of bug fixing developers must do for all of their projects.
 
 # Technologies used
 [Go to top](#table-of-contents)
