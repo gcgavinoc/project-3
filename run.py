@@ -157,23 +157,30 @@ def determine_turns():
     global turns
     print("Enter the number of turns you want to start with 1-60: ")
     turns = input()
-    while turns not in allowed_turns:
+    while turns.strip() not in allowed_turns:
         print('Invalid input, please enter a number 1-60')
         print("Enter the number of turns you want to start with 1-60: ")
         turns = input()
     turns = int(turns)
+    turns_txt = 'turns'
+    if turns == 1:
+        turns_txt = 'turn'
+        
+    print(f'You have chosen to play {turns} {turns_txt}\n')
 
 
-def clear_boards(board):
+def clear_boards():
     """
     Clears marks and misses from game boards
     """
-    for row in board:
-        for column in row:
-            if column == 'X':
-                column = ' '
-            elif column == 'O':
-                column = ' '
+    global player_board
+    player_board = [[' '] * 8 for i in range(8)]
+    global computer_board
+    computer_board = [[' '] * 8 for i in range(8)]
+    global player_guess_board
+    player_guess_board = [[' '] * 8 for i in range(8)]
+    global computer_guess_board
+    computer_guess_board = [[' '] * 8 for i in range(8)]    
 
 
 def play_again():
@@ -186,10 +193,10 @@ def play_again():
     )
     while True:
         if play_again == 'yes':
-            clear_boards(player_board)
-            clear_boards(computer_board)
-            clear_boards(player_guess_board)
-            clear_boards(computer_guess_board)
+            clear_boards()
+            # clear_boards(computer_board)
+            # clear_boards(player_guess_board)
+            # clear_boards(computer_guess_board)
             welcome()
         elif play_again == 'no':
             sys.exit('Thank you for playing!')
@@ -287,10 +294,11 @@ def welcome():
                   'Press enter to play the game\nor type rules and press enter'
                   ' to see the rules: \n'
                  )
-    if start not in 'rules' or len(start) == 0:
-        main()
-    else:
+    if start.lower() == 'rules':
         get_rules()
+    else:
+        print('You have chosen to play the game')
+        main()
 
 
 welcome()
