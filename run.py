@@ -194,9 +194,6 @@ def play_again():
     while True:
         if play_again == 'yes':
             clear_boards()
-            # clear_boards(computer_board)
-            # clear_boards(player_guess_board)
-            # clear_boards(computer_guess_board)
             welcome()
         elif play_again == 'no':
             sys.exit('Thank you for playing!')
